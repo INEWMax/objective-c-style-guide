@@ -11,6 +11,9 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Coding Guidelines for Cocoa](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html)
 * [iOS App Programming Guide](http://developer.apple.com/library/ios/#documentation/iphone/conceptual/iphoneosprogrammingguide/Introduction/Introduction.html)
 
+Some following rules can be automatically applied using uncrustify Xcode plugin via [Alcatraz plugin manager](https://github.com/sysdataitalia/Alcatraz) and following uncrustify [configuration](https://github.com/sysdataitalia/objective-c-style-guide/blob/master/uncrustify.cfg)
+
+
 ## Table of Contents
 
 * [Dot-Notation Syntax](#dot-notation-syntax)
@@ -494,6 +497,7 @@ When possible, always turn on "Treat Warnings as Errors" in the target's Build S
 
 If ours doesn't fit your tastes, have a look at some other style guides:
 
+* [NYTimes](https://github.com/NYTimes/objective-c-style-guide)
 * [Google](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)
 * [GitHub](https://github.com/github/objective-c-conventions)
 * [Adium](https://trac.adium.im/wiki/CodingStyle)
