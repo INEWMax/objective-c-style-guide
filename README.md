@@ -34,6 +34,7 @@ Some following rules can be automatically applied using uncrustify Xcode plugin 
 * [Image Naming](#image-naming)
 * [Booleans](#booleans)
 * [Singletons](#singletons)
+* [User Interfaca](#user-inteface)
 * [Xcode Project](#xcode-project)
 
 ## Dot-Notation Syntax
