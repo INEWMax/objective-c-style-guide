@@ -321,6 +321,17 @@ NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
 NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 ```
 
+**Important:**
+When variables instead of constants are used in literals, make sure they are not NIL, otherwise a runtime exception is raised.
+I.e.
+```objc
+NSString *nameKate = nil;
+NSString *nameKamal = @"Kamal";
+NSDictionary *productManagers = @{@"iPhone" : nameKate, @"iPad" :nameKamal}
+```
+
+
+
 ## CGRect Functions
 
 When accessing the `x`, `y`, `width`, or `height` of a `CGRect`, always use the [`CGGeometry` functions](http://developer.apple.com/library/ios/#documentation/graphicsimaging/reference/CGGeometry/Reference/reference.html) instead of direct struct member access. From Apple's `CGGeometry` reference:
@@ -478,6 +489,19 @@ Singleton objects should use a thread-safe pattern for creating their shared ins
 }
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
+
+## User Interface
+
+Use XIB files always when possible.
+
+Define user interface in code only when strictly necessary.
+
+Graphical elements style attributes (like colors, strings/texts, fonts) must be set in code, in the proper ViewController/View setup methods. 
+
+XIB files should only be used to set example style attributes, but the final style should be set in code. This because in this way is siplier to change application theme.
+
+Font and Colors sould be defined as macros in .pch file and never defined spead in the code.
+
 
 ## Xcode project
 
