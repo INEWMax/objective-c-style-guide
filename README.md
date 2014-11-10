@@ -624,7 +624,7 @@ Product Names:
  - DeLonghiDev.app
  - ...
 
-The XCode Asset group should contain one subfolder for each Brand.
+The Xcode Asset group should contain one subfolder for each Brand.
 Every Brand subfolder should have the same substructure that groups Seed Database, Fonts, Images, .xcassets, etc.
 Elements contained in Brand's subfolders should be linked only to proper Brand's Target.
 In this way only Brand assets will be included in the bundle at compile time.
