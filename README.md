@@ -529,15 +529,18 @@ Customize the CFBundleDisplayName or the CFBundleName in the Info.plist if the a
 **For example:**
 Project Name: Kitchen
 Targets Names: 
+
  - KitchenDev (development server, in-house)
  - KitchenTest (test server, client environment, UAT)
  - KitchenProd (production server, client environment for Client final acceptance)
  - KitchenAppStore (production server, client environment, AppStore configuration)
+
 Configuration Files:
  - KitchenDev.plist & KitchenDev.pch
  - KitchenTest.plist & KitchenTest.pch
  - KitchenProd.plist & KitchenProd.pch
  - KitchenAppStore.plist & KitchenAppStore.pch
+
 Product Names:
  - KitchenDev.app
  - KitchenTest.app
