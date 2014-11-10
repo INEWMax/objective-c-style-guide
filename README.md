@@ -527,9 +527,10 @@ The PRODUCT_NAME XCode configuration should be named in the same way.
 Customize the CFBundleDisplayName or the CFBundleName in the Info.plist if the app name need to be different from PRODUCT_NAME.
 
 **For example:**
-Project Name: Kitchen
-Targets Names: 
 
+Project Name: Kitchen
+
+Targets Names: 
  - KitchenDev (development server, in-house)
  - KitchenTest (test server, client environment, UAT)
  - KitchenProd (production server, client environment for Client final acceptance)
@@ -542,6 +543,7 @@ Configuration Files:
  - KitchenAppStore.plist & KitchenAppStore.pch
 
 Product Names:
+
  - KitchenDev.app
  - KitchenTest.app
  - KitchenProd.app
