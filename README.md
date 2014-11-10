@@ -1,3 +1,4 @@
+
 # Sysdata Italia - Objective-C Style Guide
 
 This style guide outlines the coding conventions of the iOS team at Sysdata Italia S.p.A.
@@ -34,8 +35,8 @@ Some following rules can be automatically applied using uncrustify Xcode plugin 
 * [Image Naming](#image-naming)
 * [Booleans](#booleans)
 * [Singletons](#singletons)
-* [User Interface](#user-interface)
-* [Xcode Project](#xcode-project)
+* [User Interface (WIP)](#user-interface)
+* [Xcode Project (WIP)](#xcode-project)
 
 ## Dot-Notation Syntax
 
@@ -513,6 +514,44 @@ Logical Xcode groups are used to group implementation files by funcionality.
 `.xib` files should be always be near to `.h` and `.m` files, never in a separate directory.
 Is better to have file oganized in this order: `.h`, `.m`, `.xib`.
 
+### Deploy Configuration
+
+One Target for each deploy configuration should be used.
+The target should be named with a clear patter useful to identifying:
+ - The App name and/or Brand (see Multi Brand Projects)
+ - The App Environment
+
+Each Target is linked to a specific Info.plist file and .pch configuration with the same name as the Target name.
+
+The PRODUCT_NAME XCode configuration should be named in the same way.
+Customize the CFBundleDisplayName or the CFBundleName in the Info.plist if the app name need to be different from PRODUCT_NAME.
+
+**For example:**
+Project Name: Kitchen
+Targets Names: 
+ - KitchenDev (development server, in-house)
+ - KitchenTest (test server, client environment, UAT)
+ - KitchenProd (production server, client environment for Client final acceptance)
+ - KitchenAppStore (production server, client environment, AppStore configuration)
+Configuration Files:
+ - KitchenDev.plist & KitchenDev.pch
+ - KitchenTest.plist & KitchenTest.pch
+ - KitchenProd.plist & KitchenProd.pch
+ - KitchenAppStore.plist & KitchenAppStore.pch
+Product Names:
+ - KitchenDev.app
+ - KitchenTest.app
+ - KitchenProd.app
+ - KitchenAppStore.app
+
+### Multi Brand Projects
+
+When a project involves some similar apps with only small functional difference it's recommended to use the same code base as much as possible.
+In that way it will be easy to maintain the code among all apps during all the project lifecycle (es. sharing bugfixes or enhance functionalities).
+
+The XCode project it's unique for all apps and the specific app configuration is made by different  Targets .
+
+
 
 ### Warnings
 
@@ -530,3 +569,4 @@ If ours doesn't fit your tastes, have a look at some other style guides:
 * [CocoaDevCentral](http://cocoadevcentral.com/articles/000082.php)
 * [Luke Redpath](http://lukeredpath.co.uk/blog/my-objective-c-style-guide.html)
 * [Marcus Zarra](http://www.cimgf.com/zds-code-style-guide/)
+
