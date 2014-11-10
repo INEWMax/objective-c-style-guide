@@ -507,11 +507,50 @@ Font and Colors sould be defined as macros in .pch file and never defined spead 
 
 ## Xcode project
 
-All implementation files should be all phisically put inside `Class` folder, .xib included.
+### Project Structure
 
-Logical Xcode groups are used to group implementation files by funcionality.
+The `.xcodeproj` project file should be in the project root directory.
+At the same level should be present a `.xcworkspace` workspace file and the Pods directory (if CocoaPods is used).
 
-`.xib` files should be always be near to `.h` and `.m` files, never in a separate directory.
+All certificates and `.mobileprovision` files should be placed in the `Certificates` directory.
+Jenkins build jobs will search for such directory to automatically install mobile provisions in builder server.
+
+All the projects specific files should be put inside the `Project` directory.
+
+Because of separation of phisical and logical files organization, the project should be more organized logically in Xcode (using files groups) than phisically (using file system directories).
+
+####Phisical Organization
+
+The structure inside the `Project` directory should be as simple as possible, ideally only following sub-directories should be present:
+
+ - Classes
+ - External
+ - Assets
+	 - Common
+		 - Images
+		 - Fonts
+		 - ...
+	 - BrandName (Branded Assets)
+		 - Images
+		 - Fonts
+		 - ...
+
+All implementation files should be all phisically put inside `Classes` folder, .xib included.
+
+####Logical Organization
+
+Phisical filesystem directories defined above should be replicated in Xcode with logical groups which are linked to the related directories in the filesystem.
+
+Inside `Classes` group, implementation files are organized in following main groups:
+
+ - DataModel
+ - Common
+ - Main
+ - Functionalities
+
+Inside `Functionalities` group the files are organized by funcionality using subgroups depending on project peculiarity.
+
+In general `.xib` files should be always be near to `.h` and `.m` files, never in a separate directory.
 Is better to have file oganized in this order: `.h`, `.m`, `.xib`.
 
 ### Deploy Configuration
@@ -523,8 +562,8 @@ The target should be named with a clear patter useful to identifying:
 
 Each Target is linked to a specific Info.plist file and .pch configuration with the same name as the Target name.
 
-The PRODUCT_NAME XCode configuration should be named in the same way.
-Customize the CFBundleDisplayName or the CFBundleName in the Info.plist if the app name need to be different from PRODUCT_NAME.
+The `PRODUCT_NAME` XCode configuration should be named in the same way.
+Customize the `CFBundleDisplayName` or the `CFBundleName` in the Info.plist if the app name need to be different from `PRODUCT_NAME`.
 
 **For example:**
 
@@ -554,9 +593,41 @@ Product Names:
 When a project involves some similar apps with only small functional difference it's recommended to use the same code base as much as possible.
 In that way it will be easy to maintain the code among all apps during all the project lifecycle (es. sharing bugfixes or enhance functionalities).
 
-The XCode project it's unique for all apps and the specific app configuration is made by different  Targets .
+The XCode project it's unique for all apps and the specific Brand configuration is made by defining different Targets as per Deploy Configuration.
 
+**For example:**
 
+Project Name: 
+
+ - Kitchen
+
+Brands Names:
+
+ - DeLonghi
+ - Kenwood
+
+Targets Names: 
+
+ - KenwoodDev 
+ - DeLonghiDev
+ - ...
+
+Configuration Files:
+
+ - KenwoodDev.plist & KenwoodDev.pch
+ - DeLonghiDev.plist & DeLonghiDev.pch
+ - ...
+
+Product Names:
+
+ - KenwoodDev.app
+ - DeLonghiDev.app
+ - ...
+
+The XCode Asset group should contain one subfolder for each Brand.
+Every Brand subfolder should have the same substructure that groups Seed Database, Fonts, Images, .xcassets, etc.
+Elements contained in Brand's subfolders should be linked only to proper Brand's Target.
+In this way only Brand assets will be included in the bundle at compile time.
 
 ### Warnings
 
